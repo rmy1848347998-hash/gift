@@ -2,16 +2,15 @@ import streamlit as st
 
 # --- 1. 页面基础设置 ---
 st.set_page_config(
-    page_title="For You",  # 浏览器标签页标题
-    page_icon="💌",        # 浏览器标签页图标
-    layout="centered"      # 布局居中，适合手机
+    page_title="For You",
+    page_icon="💌",
+    layout="centered"
 )
 
 # --- 2. 自定义 CSS (极简温柔风) ---
-# 这里设置了背景色为米白色，隐藏了右上角菜单，调整了按钮样式
 st.markdown("""
     <style>
-    /* 全局背景色 - 温暖的米色 */
+    /* 全局背景色 */
     .stApp {
         background-color: #FDFCF5;
     }
@@ -25,7 +24,7 @@ st.markdown("""
         margin-bottom: 50px;
     }
 
-    /* 按钮样式 - 柔和的粉色/豆沙色 */
+    /* 按钮样式 */
     div.stButton > button {
         background-color: #E6Aac4; 
         color: white;
@@ -33,7 +32,7 @@ st.markdown("""
         border-radius: 20px;
         padding: 10px 24px;
         font-size: 16px;
-        width: 100%; /* 按钮宽度填满容器，适合手机点击 */
+        width: 100%;
         transition: all 0.3s ease;
     }
     div.stButton > button:hover {
@@ -42,7 +41,7 @@ st.markdown("""
         color: white;
     }
     
-    /* 隐藏 Streamlit 默认的汉堡菜单和页脚，看起来更像原生网页 */
+    /* 隐藏菜单 */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
@@ -51,11 +50,10 @@ st.markdown("""
 
 # --- 3. 页面内容区域 ---
 
-# 标题或顶部留白
 st.write("") 
 st.write("") 
 
-# === 核心文字区 (请在这里修改你想说的话) ===
+# === 核心文字区 (这里是上面的长文字) ===
 content = """
 这里是第一段文字。
 你可以写一些平时不好意思开口的话，
@@ -71,26 +69,24 @@ content = """
 
 st.markdown(f'<div class="custom-text">{content.replace(chr(10), "<br>")}</div>', unsafe_allow_html=True)
 
-# 添加一些空行，让按钮自然地沉在下面
 for _ in range(8):
     st.text("")
 
 # --- 4. 按钮与惊喜 ---
 
-# 创建两列，用来把按钮挤在中间（虽然 mobile 默认也是居中，这样更保险）
 col1, col2, col3 = st.columns([1, 10, 1])
 
 with col2:
-    # === 按钮文字 (请在这里修改) ===
+    # === 按钮部分 (注意：下面的代码必须保持这种阶梯状的缩进) ===
     if st.button("✨ 点开，有一份小惊喜"):
         # 1. 撒花特效
         st.balloons() 
         
-        # 2. 弹出信息 (请在这里修改礼物/快递信息)
-        st.success("🎁 礼物已寄出！")
+        # 2. 弹出文字
+        st.success("🎁 礼物已发出！")
         
-      st.info("""
-**📍 见面地点**: 幸福路 520 号 \n\n
-**🔐 专属暗号**: 小猪快跑 \n
-""")
-
+        # 3. 详细信息
+        st.info("""
+        **📍 见面地点**: 幸福路 520 号 \n\n
+        **🔐 专属暗号**: 小猪快跑 \n
+        """)
